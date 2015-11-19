@@ -33,10 +33,9 @@ sed "s/'/ /g" subreddit.json > subreddits.json
 
 Importujemy do MongoDB pobrany plik subreddit.bson, poleceniem:
 
+[source]
 time mongorestore -d nosql -c subreddit subreddit.bson
-       
 image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoStart.jpg
-
 image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoEnd.jpg
 
 Czas importu wynosi 3 minuty i 13 sekund.
