@@ -5,7 +5,7 @@ Aleksander Bolt <aleksanderbolt@yahoo.com>
 W projekcie użyłem następujący sprzęt i technologie:
 
 [cols="2,2]
-|==
+|===
 Procesor
 Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz
 Pamięc RAM
@@ -15,7 +15,7 @@ System operacyjny, Linux 3.13.0-24-generic Mint 17 Qiana
 MongoDB, 3.0.7
 PostgreSQL, 9.3.5
 Python, 2.7.7
-|==
+|===
 
 Poddałem analizie zbiór [subredditów](https://dl.dropboxusercontent.com/u/15056258/mongodb/reddit.zip). Spakowany w formacie zip ma on 209,6 MB, zaś rozpakowany 1,2 GB.
 
