@@ -5,6 +5,8 @@ Aleksander Bolt <aleksanderbolt@yahoo.com>
 :===
 Procesor,21312
 
+:===
+
 bsondump subreddit.bson > subreddit.json
 time mongorestore -d nosql -c subreddit subreddit.bson
 https://dl.dropboxusercontent.com/u/15056258/mongodb/reddit.zip
