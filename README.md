@@ -2,15 +2,8 @@
 Aleksander Bolt <aleksanderbolt@yahoo.com>
 :icons: font
 
-+---------------------+-----------------------+
-|Procesor             |dsa                    |
-+---------------------+-----------------------+
-|Procesor             |dsada                  |
-+---------------------+-----------------------+
-|Procesor             |                       |
-+---------------------+-----------------------+
-|Procesor             |                       |
-+---------------------+-----------------------+
+:===
+Procesor,21312
 
 bsondump subreddit.bson > subreddit.json
 time mongorestore -d nosql -c subreddit subreddit.bson
