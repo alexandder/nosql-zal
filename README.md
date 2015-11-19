@@ -1,1 +1,1 @@
-# nosql-zal
+= Technologie nosql - zaliczenie
