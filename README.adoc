@@ -34,7 +34,7 @@ sed "s/'/ /g" subreddit.json > subreddits.json
 Importujemy do MongoDB pobrany plik subreddit.bson, poleceniem:
 
 time mongorestore -d nosql -c subreddit subreddit.bson
-
+       
 image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoStart.jpg
 
 image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoEnd.jpg
@@ -49,7 +49,7 @@ CREATE TABLE subreddits(
 	data json
 );
 
-Do importu wykorzystamy biblotekę psycopg2 oraz https://github.com/alexandder/nosql-zal/master/insert.py[skrypt]. 
+Do importu wykorzystamy biblotekę psycopg2 oraz https://github.com/alexandder/nosql-zal/blob/master/insert.py[skrypt]. 
 W jego wyniku otrzymamy
 
 image::https://github.com/alexandder/nosql-zal/blob/master/images/postgresInsert.jpg
