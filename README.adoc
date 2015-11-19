@@ -36,9 +36,9 @@ Importujemy do MongoDB pobrany plik subreddit.bson, poleceniem:
 [source]
 time mongorestore -d nosql -c subreddit subreddit.bson
 
-![](https://github.com/alexandder/nosql-zal/blob/master/images/mongoStart.jpg)
+image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoStart.jpg[]
 
-image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoEnd.jpg
+image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoEnd.jpg[]
 
 Czas importu wynosi 3 minuty i 13 sekund.
 
@@ -53,7 +53,7 @@ CREATE TABLE subreddits(
 Do importu wykorzystamy biblotekę psycopg2 oraz https://github.com/alexandder/nosql-zal/blob/master/insert.py[skrypt]. 
 W jego wyniku otrzymamy
 
-image::https://github.com/alexandder/nosql-zal/blob/master/images/postgresInsert.jpg
+image::https://github.com/alexandder/nosql-zal/blob/master/images/postgresInsert.jpg[]
 
 Czas importu wynosi 6 minut i 17 sekund
 
@@ -61,9 +61,9 @@ Czas importu wynosi 6 minut i 17 sekund
 
 W obu bazach zliczamy rekordy:
 
-image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoCount.jpg
+image::https://github.com/alexandder/nosql-zal/blob/master/images/mongoCount.jpg[]
 
-image::https://github.com/alexandder/nosql-zal/blob/master/images/postgresCount.jpg
+image::https://github.com/alexandder/nosql-zal/blob/master/images/postgresCount.jpg[]
 
 
 Zatem w obu przypadkach zaimportowaliśmy 904490 rekordów.
