@@ -20,10 +20,12 @@ Poddałem analizie zbiór [subredditów](https://dl.dropboxusercontent.com/u/150
 
 W celu zaimportowania danych do bazy PostgreSQL wygodniej jest operować plikiem w formacie json. Przekształcamy pobrany plik subreddit.bson poleceniem:
 
+[source]
 bsondump subreddit.bson > subreddit.json
 
 Ponieważ w opisie subredditów znajdują się często słowa z pojedynczym apostrofem (na przykład don't), zastępujemy znak ' znakiem spacji. W przeciwnym wypadku otrzymalibyśmy błąd przy próbie wstawienia danych. Można to zrobić np. tak
 
+[source]
 sed "s/'/ /g" subreddit.json > subreddits.json
 
 == Import danych
@@ -41,6 +43,8 @@ time mongorestore -d nosql -c subreddit subreddit.bson
 Czas importu wynosi 3 minuty i 13 sekund.
 
 W celu zaimportowania danych do bazy PostgreSQL, tworzymy najpierw tabelę:
+
+[source]
 CREATE TABLE subreddits(
 	id serial primary key,
 	data json
