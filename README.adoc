@@ -14,7 +14,7 @@ PostgreSQL, 9.3.5
 Python, 2.7.7
 :===
 
-Poddałem analizie zbiór <a href="https://dl.dropboxusercontent.com/u/15056258/mongodb/reddit.zip">subredditów</a>. Spakowany w formacie zip ma on 209,6 MB, zaś rozpakowany 1,2 GB.
+Poddałem analizie zbiór [subredditów](https://dl.dropboxusercontent.com/u/15056258/mongodb/reddit.zip). Spakowany w formacie zip ma on 209,6 MB, zaś rozpakowany 1,2 GB.
 
 == Przetwarzane wstępne
 
