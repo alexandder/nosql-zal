@@ -1,4 +1,63 @@
-:===
-Procesor:das
+= Technologie nosql - zaliczenie
+Aleksander Bolt <aleksanderbolt@yahoo.com>
+:icons: font
+
+W projekcie użyłem następujący sprzęt i technologie:
 
 :===
+Procesor,Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz
+Pamięc RAM, 8GB
+Dysk, SSD
+System operacyjny, Linux 3.13.0-24-generic Mint 17 Qiana
+MongoDB, 3.0.7
+PostgreSQL, 9.3.5
+Python, 2.7.7
+:===
+
+Poddałem analizie zbiór <a href="https://dl.dropboxusercontent.com/u/15056258/mongodb/reddit.zip">subredditów</a>. Spakowany w formacie zip ma on 209,6 MB, zaś rozpakowany 1,2 GB.
+
+== Przetwarzane wstępne
+
+W celu zaimportowania danych do bazy PostgreSQL wygodniej jest operować plikiem w formacie json. Przekształcamy pobrany plik subreddit.bson poleceniem:
+
+bsondump subreddit.bson > subreddit.json
+
+Ponieważ w opisie subredditów znajdują się często słowa z pojedynczym apostrofem (na przykład don't), zastępujemy znak ' znakiem spacji. W przeciwnym wypadku otrzymalibyśmy błąd przy próbie wstawienia danych. Można to zrobić np. tak
+
+sed "s/'/ /g" subreddit.json > subreddits.json
+
+== Import danych
+
+Importujemy do MongoDB pobrany plik subreddit.bson, poleceniem:
+
+time mongorestore -d nosql -c subreddit subreddit.bson
+
+<img src="https://github.com/alexandder/nosql-zal/images/mongoStart.jpg" />
+
+
+
+<img src="https://github.com/alexandder/nosql-zal/images/mongoEnd.jpg" />
+
+Czas importu wynosi 3 minuty i 13 sekund.
+
+W celu zaimportowania danych do bazy PostgreSQL, tworzymy najpierw tabelę:
+CREATE TABLE subreddits(
+	id serial primary key,
+	data json
+);
+
+Do importu wykorzystamy biblotekę psycopg2 oraz <a href="">skrypt</a>. W jego wyniku otrzymamy
+
+<img src="https://github.com/alexandder/nosql-zal/images/postgresInsert.jpg" />
+
+Czas importu wynosi 6 minut i 17 sekund
+
+== Zliczanie rekordów
+
+W obu bazach zliczamy rekordy:
+
+<img src="https://github.com/alexandder/nosql-zal/images/mongoCount.jpg" />
+
+<img src="https://github.com/alexandder/nosql-zal/images/postgresCount.jpg" />
+
+Zatem w obu przypadkach zaimportowaliśmy 904490 rekordów.
