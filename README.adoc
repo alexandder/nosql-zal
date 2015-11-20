@@ -110,7 +110,7 @@ W wyniku niego otrzymujemy listę 10 najczęściej występujących języków:
 |883
 |===
 
-Korzystając z biblioteki PyMongo, obliczmy jakie języki występują najrzadziej:
+Korzystając z biblioteki PyMongo, obliczmy (https://github.com/alexandder/nosql-zal/blob/master/find.py[skrypt]) jakie języki występują najrzadziej:
 [source]
 db.subreddits.aggregate([{"$group" : {"_id" : "$lang", "count" : {"$sum" : 1}}},
                                       {"$sort" : {"count" : 1}},
