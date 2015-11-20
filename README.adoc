@@ -13,6 +13,8 @@ System operacyjny, Linux 3.13.0-24-generic Mint 17 Qiana
 MongoDB, 3.0.7
 PostgreSQL, 9.3.5
 Python, 2.7.7
+PyMongo, 3.1.1
+Psycopg2, 2.6.1
 |===
 
 Poddałem analizie zbiór https://dl.dropboxusercontent.com/u/15056258/mongodb/reddit.zip[subreditów]. Spakowany w formacie zip ma on 209,6 MB, zaś rozpakowany 1,2 GB.
@@ -67,3 +69,82 @@ image::https://github.com/alexandder/nosql-zal/blob/master/images/postgresCount.
 
 
 Zatem w obu przypadkach zaimportowaliśmy 904490 rekordów.
+
+== Agregacje
+Każdy subreddit może mieć określony jeden obowiązujący język (albo nie mieć). Obliczymy jakie języki występują najczęściej a jakie najrzadziej. W tym celu wykorzystamy zapytanie:
+[source]
+SELECT data->>'lang' as Language, COUNT(*) as Quantity FROM subreddits GROUP BY data->>'lang' ORDER BY Quantity DESC LIMIT 10;
+
+W wyniku niego otrzymujemy listę 10 najczęściej występujących języków:
+|===
+|Język |Liczba wystąpień 
+
+|en
+|600881
+
+|nieokreślony
+|277575
+
+|es
+|4172
+
+|de
+|3299
+
+|fr
+|2080
+
+|sv
+|2073
+
+|nl
+|1934
+
+|pt
+|1775
+
+|no
+|956
+
+|tr
+|883
+|===
+
+Korzystając z biblioteki PyMongo, obliczmy jakie języki występują najrzadziej:
+[source]
+db.subreddits.aggregate([{"$group" : {"_id" : "$lang", "count" : {"$sum" : 1}}},
+                                      {"$sort" : {"count" : 1}},
+                                      {"$limit" : 10}])
+|===
+|Język |Liczba wystąpień 
+
+|leet
+|1
+
+|gd
+|6
+
+|eu
+|6
+
+|nn
+|12
+
+|bs
+|18
+
+|hy
+|24
+
+|be
+|30
+
+|ta
+|32
+
+|lv
+|35
+
+|la
+|49
+|===
